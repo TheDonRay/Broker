@@ -19,19 +19,26 @@ const organizeAnalysis = async (req, res) => {
         // now we can get the stock data here as such 
         const stockData = await fetchStockData(stockTicketer); 
         // now call the map function to organize the data  
-        const organizedStockData = stockData.data?.map((stock) => { 
-            dailyDifference: stock.close - stock.open
-            dailyChangePercent: ((stock.close - stock.open) / stock.open * 100).toFixed(2)
+        const organizedStockData = stockData.data?.map((stock) => ({ 
+            dailyDifference: stock.close - stock.open,
+            dailyChangePercent: ((stock.close - stock.open) / stock.open * 100).toFixed(2),
             //volatility 
-            dailyRange: stock.high - stock.low
+            dailyRange: stock.high - stock.low,
             volatilityPercent: ((stock.high - stock.low) / stock.open * 100).toFixed(2), 
             //volume strength 
-            volumeInMillions: (stock.volume / 1000000).toFixed(2) 
+            volumeInMillions: (stock.volume / 1000000).toFixed(2),
             //Price p osition in daily range 
             closedNearHigh: ((stock.close - stock.low) / (stock.high - stock.low) * 100).toFixed(0)
-        })
+        })) || [];  
+        // just to make sure its correctly calculating it as such 
+        return res.status(200).json({ 
+            AnalysisData: organizedStockData
+        }); 
     } catch (error) { 
-
+        console.error('Error organizing the data', error); 
+        return res.status(500).json({ 
+            error: 'Failed to organize stock data'
+        }); 
     }
 } 
 

@@ -1,6 +1,23 @@
-// do the marketstack external api call  here but take in the parameter stockTicketer 
-const fetchStockData = async (stockTicketer) => { 
-    //logic here to seperate so we can export the data and organize it 
-} 
+const fetchStockData = async (stockTicketer) => {
+  const buildParameters = new URLSearchParams({
+    access_key: process.env.MARKET_STACK_APIKEY,
+    symbols: stockTicketer,
+  });
 
-module.exports = { fetchStockData }; 
+  const MarketStackURL = `https://api.marketstack.com/v2/eod?${buildParameters}`;
+  const externalAPI = await fetch(MarketStackURL);
+
+  if (!externalAPI.ok) {
+    throw new Error(`API returned status ${externalAPI.status}`);
+  }
+
+  const externalAPIresponse = await externalAPI.json();
+
+  if (externalAPIresponse.error) {
+    throw new Error(externalAPIresponse.error.message);
+  }
+
+  return externalAPIresponse;
+};
+
+module.exports = { fetchStockData };

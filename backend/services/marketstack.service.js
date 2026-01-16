@@ -1,7 +1,8 @@
 const fetchStockData = async (stockTicketer) => {
   const buildParameters = new URLSearchParams({
     access_key: process.env.MARKET_STACK_APIKEY,
-    symbols: stockTicketer,
+    symbols: stockTicketer, 
+    limit: 10
   });
 
   const MarketStackURL = `https://api.marketstack.com/v2/eod?${buildParameters}`;

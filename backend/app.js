@@ -11,7 +11,10 @@ app.get('/', (req, res) => {
     res.json({ 
         Server: 'Successfully Running'
     }); 
-});  
+});   
+
+//instantiate the route 
+app.use('/api/v1/', stockdataroute);
 
 
 

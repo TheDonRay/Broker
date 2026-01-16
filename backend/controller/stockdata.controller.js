@@ -18,7 +18,14 @@ const stockdata = async (req, res) => {
 
     const MarketStackURL = `https://api.marketstack.com/v2/eod?${buildParameters}`; 
     // implement the backend function to actually handle the request 
-    const getdataExternalAPI = await fetch(MarketStackURL);  
+    const getdataExternalAPI = await fetch(MarketStackURL);   
+
+    if (!getdataExternalAPI.ok){ 
+        return res.status(getdataExternalAPI.status).json({ 
+            error: "Failed to fetch from the external API"
+        }); 
+    }
+
     const response = await getdataExternalAPI.json(); 
 
     if (response.error){ 
@@ -33,9 +40,11 @@ const stockdata = async (req, res) => {
     }); 
    
     } catch (error) { 
-        
+        console.error('Error retrieving the data from externalAPI', error); 
+        res.status(500).json({
+            error: 'internal server error'
+        }); 
     }
-    
 } 
 
 module.exports = stockdata; 

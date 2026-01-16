@@ -1,4 +1,5 @@
-
+//import the service function here as such 
+const { fetchStockData } = require('../services/marketstack.service.js'); 
 
 const stockdata = async (req, res) => {   
     // if you are wondering its like server to server communication in a way where it seems like we are making a frontend call but in our backend. 
@@ -14,6 +15,7 @@ const stockdata = async (req, res) => {
         }); 
     }  
 
+    // put this in the fetchStockData
     const buildParameters = new URLSearchParams({ 
         access_key: process.env.MARKET_STACK_APIKEY, 
         symbols: stockTicketer

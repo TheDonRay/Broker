@@ -1,52 +1,67 @@
-import React from "react"; 
-import { useNavigate } from 'react-router-dom'; 
+import React from "react";
+import { useNavigate } from 'react-router-dom';
 import "../styles/Homepage.css";
 
-export default function Homepage() { 
-    const navigate = useNavigate(); 
-    function signUpPage() { 
-        navigate('/signup'); 
+export default function Homepage() {
+    const navigate = useNavigate();
+    function signUpPage() {
+        navigate('/signup');
     }
   return (
-    <>
+    <div className="homepage-container">
+      <div className="info-section">
+        <h1 className="info-title">Broker</h1>
+        <p className="info-description">
+          Your intelligent stock analysis companion. Get real-time insights,
+          market trends, and data-driven recommendations to make informed
+          investment decisions.
+        </p>
+        <ul className="info-features">
+          <li>Real-time market analysis</li>
+          <li>AI-powered stock recommendations</li>
+          <li>Portfolio tracking</li>
+          <li>Risk assessment tools</li>
+        </ul>
+      </div>
+
       <div className="login">
-        <h2 className="login-title">Welcome To Broker</h2>
+        <h2 className="login-title">Welcome Back</h2>
         <p className="subtextabout-broker">
           Hesitant on a stock? Let Broker break the hesitation.
-        </p> 
-        <form> 
-            <div className="Text-area"> 
-                <input 
-                    type="text" 
-                    id="username" 
-                    name="Username" 
+        </p>
+        <form>
+            <div className="Text-area">
+                <input
+                    type="text"
+                    id="username"
+                    name="Username"
                     placeholder="Username"
-                    className="textinput" 
-                />
-            </div> 
-            <div className='Text-area'>  
-                <input 
-                    type="password" 
-                    id="password"  
-                    name="Password" 
-                    placeholder="Password" 
                     className="textinput"
-                /> 
-            </div> 
-            <input 
-                type="submit" 
-                value="Login" 
-                className="btn" 
-            /> 
- 
-            <input 
-                type="button" 
-                value="Sign Up"  
+                />
+            </div>
+            <div className='Text-area'>
+                <input
+                    type="password"
+                    id="password"
+                    name="Password"
+                    placeholder="Password"
+                    className="textinput"
+                />
+            </div>
+            <input
+                type="submit"
+                value="Login"
+                className="btn"
+            />
+
+            <input
+                type="button"
+                value="Sign Up"
                 onClick={signUpPage}
-                className="btn" 
+                className="btn"
             />
         </form>
       </div>
-    </>
+    </div>
   );
 }

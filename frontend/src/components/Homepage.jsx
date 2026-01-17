@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import "../styles/Homepage.css";
 
 export default function Homepage() { 
-
+    const navigate = useNavigate(); 
     function signUpPage() { 
-
+        navigate('/signup'); 
     }
   return (
     <>
@@ -40,8 +40,9 @@ export default function Homepage() {
             /> 
  
             <input 
-                type="submit" 
-                value="Sign Up" 
+                type="button" 
+                value="Sign Up"  
+                onClick={signUpPage}
                 className="btn" 
             />
         </form>

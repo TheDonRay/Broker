@@ -36,11 +36,13 @@ const organizeAnalysis = async (req, res) => {
             model: "gpt-5-nano", 
             messages: [ 
                 { 
-                    role: 'ai', 
+                    role: 'system', 
                     content: 'You are a trader advising a client on the best stock to invest in based of data that you recieved and how much to typically invest.'
                 }, 
-                { 
-                    content: organizedStockData
+                {  
+                    role: 'user', 
+                    // turned the json data into string data since the content needs to be a string as well. 
+                    content: `Here is the stock data:\n${JSON.stringify(organizedStockData, null, 2)}`
                 }
             ]
         }); 
@@ -48,7 +50,7 @@ const organizeAnalysis = async (req, res) => {
         return res.status(200).json({ 
             AItrader: AItrader.choices[0].message.content
         }); 
-        
+
     } catch (error) { 
         console.error('Error organizing the data', error); 
         return res.status(500).json({ 

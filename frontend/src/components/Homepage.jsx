@@ -1,11 +1,6 @@
-import React from 'react'; 
-import "../styles/Homepage.css"; 
+import React from "react";
+import "../styles/Homepage.css";
 
-export default function Homepage() {  
-
-    return( 
-        <> 
-        <h1>Welcome to Broker</h1>
-        </>
-    )
+export default function Homepage() {
+  return <></>;
 }

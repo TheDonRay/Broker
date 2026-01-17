@@ -37,7 +37,7 @@ const organizeAnalysis = async (req, res) => {
             messages: [ 
                 { 
                     role: 'system', 
-                    content: 'You are a trader advising a client on the best stock to invest in based of data that you recieved and how much to typically invest.'
+                    content: 'Analyze the provided stock data and recommend a potential investment opportunity, including reasoning, risk factors, and a suggested allocation.'
                 }, 
                 {  
                     role: 'user', 

@@ -30,10 +30,25 @@ const organizeAnalysis = async (req, res) => {
             //Price p osition in daily range 
             closedNearHigh: ((stock.close - stock.low) / (stock.high - stock.low) * 100).toFixed(0)
         })) || [];  
-        // just to make sure its correctly calculating it as such 
-        return res.status(200).json({ 
-            AnalysisData: organizedStockData
+        // just to make sure its correctly calculating it as such  
+        //send data to open ai now with a strong prompt.  
+        const AItrader = await client.chat.completions.create({ 
+            model: "gpt-5-nano", 
+            messages: [ 
+                { 
+                    role: 'ai', 
+                    content: 'You are a trader advising a client on the best stock to invest in based of data that you recieved and how much to typically invest.'
+                }, 
+                { 
+                    content: organizedStockData
+                }
+            ]
         }); 
+
+        return res.status(200).json({ 
+            AItrader: AItrader.choices[0].message.content
+        }); 
+        
     } catch (error) { 
         console.error('Error organizing the data', error); 
         return res.status(500).json({ 

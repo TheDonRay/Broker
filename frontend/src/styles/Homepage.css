@@ -1,6 +1,14 @@
 * {
   font-family: "Poppins", sans-serif;
   font-style: normal;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #0a0a0a;
+  min-height: 100vh;
 }
 
 .homepage-container {
@@ -8,25 +16,27 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  gap: 80px;
+  gap: 100px;
   padding: 20px;
 }
 
+/* Info Section */
 .info-section {
-  max-width: 400px;
+  max-width: 450px;
 }
 
 .info-title {
-  font-size: 3rem;
+  font-size: 4rem;
   font-weight: 700;
   margin-bottom: 20px;
+  color: #fff;
 }
 
 .info-description {
   font-size: 1.1rem;
-  color: #555;
-  line-height: 1.6;
-  margin-bottom: 25px;
+  color: #888;
+  line-height: 1.8;
+  margin-bottom: 30px;
 }
 
 .info-features {
@@ -35,45 +45,122 @@
 }
 
 .info-features li {
-  padding: 10px 0;
+  padding: 12px 0;
   font-size: 1rem;
-  color: #333;
+  color: #aaa;
   position: relative;
-  padding-left: 25px;
+  padding-left: 30px;
+  transition: color 0.3s ease;
+}
+
+.info-features li:hover {
+  color: #fff;
 }
 
 .info-features li::before {
-  content: "✓";
+  content: "—";
   position: absolute;
   left: 0;
-  color: #4CAF50;
-  font-weight: bold;
+  color: #444;
 }
 
+/* Login Card */
 .login {
-  background: #fff;
-  padding: 40px;
-  border-radius: 10px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  min-width: 350px;
+  background: #111;
+  padding: 50px;
+  border-radius: 16px;
+  border: 1px solid #222;
+  min-width: 400px;
+  transition: border-color 0.3s ease;
+}
+
+.login:hover {
+  border-color: #333;
 }
 
 .login-title {
   font-weight: 600;
-  margin-bottom: 10px;
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+  color: #fff;
 }
 
 .subtextabout-broker {
   color: #666;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
+  font-size: 0.95rem;
+}
+
+/* Input styling with spacing */
+.Text-area {
+  margin-bottom: 18px;
+}
+
+.textinput {
+  width: 100%;
+  padding: 16px 20px;
+  border: 1px solid #222;
+  border-radius: 10px;
+  background: #0a0a0a;
+  color: #fff;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  outline: none;
+}
+
+.textinput::placeholder {
+  color: #555;
+}
+
+.textinput:focus {
+  border-color: #444;
+}
+
+/* Buttons with spacing */
+.btn {
+  width: 100%;
+  padding: 16px 25px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn[value="Login"] {
+  background: #fff;
+  color: #000;
+}
+
+.btn[value="Login"]:hover {
+  background: #e5e5e5;
+  transform: translateY(-2px);
+}
+
+.btn[value="Login"]:active {
+  transform: translateY(0);
+}
+
+.btn[value="Sign Up"] {
+  background: transparent;
+  color: #888;
+  border: 1px solid #333;
+  margin-top: 12px;
+}
+
+.btn[value="Sign Up"]:hover {
+  color: #fff;
+  border-color: #555;
 }
 
 /* Tablet and smaller screens */
 @media (max-width: 900px) {
   .homepage-container {
     flex-direction: column;
-    gap: 40px;
-    padding: 40px 20px;
+    gap: 50px;
+    padding: 50px 20px;
   }
 
   .info-section {
@@ -88,7 +175,7 @@
 
   .login {
     width: 100%;
-    max-width: 400px;
+    max-width: 420px;
     min-width: auto;
   }
 }
@@ -96,12 +183,12 @@
 /* Mobile phones */
 @media (max-width: 480px) {
   .homepage-container {
-    padding: 20px 15px;
-    gap: 30px;
+    padding: 30px 20px;
+    gap: 40px;
   }
 
   .info-title {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 
   .info-description {
@@ -109,15 +196,15 @@
   }
 
   .info-features li {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
   }
 
   .login {
-    padding: 25px 20px;
+    padding: 35px 25px;
   }
 
   .login-title {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
   }
 
   .subtextabout-broker {
@@ -125,12 +212,10 @@
   }
 
   .textinput {
-    width: 100%;
-    box-sizing: border-box;
+    padding: 14px 16px;
   }
 
   .btn {
-    width: 100%;
-    box-sizing: border-box;
+    padding: 14px 20px;
   }
 }

@@ -1,11 +1,22 @@
 import React from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; 
+import { useState } from 'react'; 
 import "../styles/Homepage.css";
 
-export default function Homepage() {
+export default function Homepage() { 
+
+    const [username, setUsername] = useState(''); 
     const navigate = useNavigate();
     function signUpPage() {
         navigate('/signup');
+    }  
+
+  // TODO: Implement the login feature here as such 
+    const handleLogin = async (e) => { 
+      e.preventDefault();   
+
+      // implement try and catch case to handle the input for the login and sign up ->  
+
     }
   return (
     <div className="homepage-container">
@@ -33,7 +44,8 @@ export default function Homepage() {
                     type="text"
                     id="username"
                     name="Username"
-                    placeholder="Username"
+                    placeholder="Username" 
+                    onChange={handleLogin}
                     className="textinput"
                 />
             </div>
@@ -42,7 +54,8 @@ export default function Homepage() {
                     type="password"
                     id="password"
                     name="Password"
-                    placeholder="Password"
+                    placeholder="Password" 
+                    onChange={handleLogin}
                     className="textinput"
                 />
             </div>

@@ -5,7 +5,8 @@ import "../styles/Homepage.css";
 
 export default function Homepage() { 
 
-    const [username, setUsername] = useState(''); 
+    const [username, setUsername] = useState('');  
+    const [password, setPassword] = useState(''); 
     const navigate = useNavigate();
     function signUpPage() {
         navigate('/signup');
@@ -44,8 +45,9 @@ export default function Homepage() {
                     type="text"
                     id="username"
                     name="Username"
-                    placeholder="Username" 
-                    onChange={handleLogin}
+                    placeholder="Username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
                     className="textinput"
                 />
             </div>
@@ -55,7 +57,8 @@ export default function Homepage() {
                     id="password"
                     name="Password"
                     placeholder="Password" 
-                    onChange={handleLogin}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     className="textinput"
                 />
             </div>

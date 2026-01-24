@@ -61,7 +61,8 @@ export default function Homepage() {
         }
         
       } catch (error) { 
-        setError('Error connecting to the server. Please try again.');
+        setError('Error connecting to the server. Please try again.'); 
+        alert('Error')
         console.error('Error sending data to the backend', error); 
       } finally {
         setLoading(false); // stops the loading. 

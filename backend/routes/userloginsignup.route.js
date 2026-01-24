@@ -12,6 +12,6 @@ users.get('/userprotected', checktoken, (req, res) => {
     res.json({ 
         message: 'User details Protected',
         user: req.username
-    })
+    });
 })
 module.exports = users; 

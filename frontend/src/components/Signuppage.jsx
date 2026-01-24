@@ -46,28 +46,30 @@ export default function SignUpPage() {
         setLoading(true);
 
         // TODO: Add your backend signup endpoint here
-        // try {
-        //     const response = await fetch('http://localhost:7898/api/v1/signup', {
-        //         method: 'POST',
-        //         headers: { 'Content-Type': 'application/json' },
-        //         body: JSON.stringify({
-        //             username: formData.username,
-        //             email: formData.email,
-        //             password: formData.password
-        //         })
-        //     });
-        //     const data = await response.json();
-        //     if (response.ok) {
-        //         setSuccess('Account created successfully! Redirecting...');
-        //         setTimeout(() => navigate('/'), 1500);
-        //     } else {
-        //         setError(data.error || 'Signup failed');
-        //     }
-        // } catch (err) {
-        //     setError('Error connecting to server');
-        // } finally {
-        //     setLoading(false);
-        // }
+        try {
+            const response = await fetch('http://localhost:7898/api/v1/signup', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    username: formData.username,
+                    email: formData.email,
+                    password: formData.password
+                })
+            });
+            const data = await response.json();
+            if (response.ok) {
+                setSuccess('Account created successfully! Redirecting...');
+                setTimeout(() => navigate('/'), 1500);
+            } else {
+                setError(data.error || 'Signup failed');
+            }
+        } catch (err) { 
+            console.log('Error sending data to the backend', err); 
+            alert('There was an error signing you up'); 
+            setError('Error connecting to server');
+        } finally {
+            setLoading(false);
+        }
 
         // Temporary simulation - remove when backend is connected
         setTimeout(() => {

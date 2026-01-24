@@ -18,7 +18,7 @@ const organizeAnalysis = async (req, res) => {
 
         // now we can get the stock data here as such 
         const stockData = await fetchStockData(stockTicketer); 
-        // now call the map function to organize the data  
+        // now call the map function to organize the data into a new array. 
         const organizedStockData = stockData.data?.map((stock) => ({ 
             dailyDifference: stock.close - stock.open,
             dailyChangePercent: ((stock.close - stock.open) / stock.open * 100).toFixed(2),

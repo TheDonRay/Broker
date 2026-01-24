@@ -68,37 +68,6 @@ export default function Homepage() {
       }
     }
 
-    const fetchProtectedData = async () => {
-      try {
-        const token = localStorage.getItem('authToken');
-        
-        if (!token) {
-          setError('No authentication token found. Please login first.');
-          return;
-        }
-        
-        const response = await fetch(`http://localhost:7898/api/v1/userprotected`, {
-          method: 'GET',
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
-          }
-        });
-        
-        const data = await response.json();
-        
-        if (response.ok) {
-          console.log('Protected data:', data);
-          setSuccess(`Welcome, ${data.user.username}`);
-        } else {
-          setError(data.Error || 'Failed to fetch protected data');
-        }
-      } catch (error) {
-        setError('Error fetching protected data');
-        console.error(error);
-      }
-    }
-
   return (
     <div className="homepage-container">
       <div className="info-section">

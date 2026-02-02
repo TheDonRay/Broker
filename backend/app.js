@@ -6,7 +6,7 @@ const cors = require('cors');
 const stockdataroute = require("./routes/stockdata.route.js");
 const organizeSend = require("./routes/organizesend.route.js"); 
 const users = require('./routes/userloginsignup.route.js');  
-const userDetails = require('./routes/getuserdetails.route.js'); 
+
 
 app.use(express.json());
 app.use(cors()); 
@@ -22,6 +22,5 @@ app.get("/", (req, res) => {
 app.use("/api/v1/", stockdataroute);
 app.use("/api/v1/", organizeSend);
 app.use("/api/v1", users);  
-app.use("/api/v1/", userDetails); 
 
 module.exports = app;

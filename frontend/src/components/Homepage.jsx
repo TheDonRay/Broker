@@ -53,6 +53,9 @@ export default function Homepage() {
           if (backendResponse.token) {
             localStorage.setItem('authToken', backendResponse.token);
           }
+
+          // Store username for dashboard display
+          localStorage.setItem('username', username);
           
           // Redirect after short delay
           setTimeout(() => navigate('/dashboard'), 1500); // need to add this page. to the frontend.  

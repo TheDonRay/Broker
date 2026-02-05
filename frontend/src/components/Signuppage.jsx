@@ -45,7 +45,6 @@ export default function SignUpPage() {
 
         setLoading(true);
 
-        // TODO: Add your backend signup endpoint here
         try {
             const response = await fetch('http://localhost:7898/api/v1/signup', {
                 method: 'POST',

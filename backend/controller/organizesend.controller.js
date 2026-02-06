@@ -37,7 +37,7 @@ const organizeAnalysis = async (req, res) => {
             messages: [ 
                 { 
                     role: 'system', 
-                    content: 'Analyze the provided stock data and recommend a potential investment opportunity, including reasoning, risk factors, and a suggested allocation.'
+                    content: 'Analyze the provided stock data and determine whether the stock is a good investment based on the calculations made from organizing the data. Include a clear recommendation, key risks, and whether investing is advisable. If applicable, suggest a reasonable investment amount based on the analysis.'
                 }, 
                 {  
                     role: 'user', 

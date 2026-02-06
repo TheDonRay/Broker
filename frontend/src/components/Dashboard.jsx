@@ -19,7 +19,7 @@ export default function Dashboard() {
   }, []);
 
   const handleUserInput = (event) => {
-    setUserInput(event.target.value);
+    setUserInput(event.target.value); // handles what the user writes in the search box. 
   }
 
   const handleTickerClick = (ticker) => {
@@ -27,8 +27,19 @@ export default function Dashboard() {
   }
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-    // below send the information to the backend via the route we use. this is what I'll do.
+    event.preventDefault();  
+
+    // start of with a base case here as such 
+    if (userInput.trim() === ""){ 
+      alert('Please Enter a Stock Ticker'); 
+    } 
+
+    if (userInput.length > 4){ 
+      alert('Please enter a valid Stock Ticker'); 
+    } 
+
+    // begin the try and catch case to actually send it to the backend here as such 
+    
   }
 
   return(

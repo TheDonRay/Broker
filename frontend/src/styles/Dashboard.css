@@ -1,3 +1,198 @@
-.dashtitle { 
-    color: white; 
+/* Dashboard Container */
+.dashboard-container {
+    min-height: 100vh;
+    background: #0a0a0a;
+    padding: 40px;
+}
+
+/* Header Section */
+.heading-div {
+    margin-bottom: 40px;
+}
+
+.dashtitle {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: -0.5px;
+}
+
+.dashtitle span {
+    color: #4ade80;
+}
+
+/* Search Section */
+.userinputcontainer {
+    max-width: 600px;
+}
+
+.search-card {
+    background: #111;
+    padding: 30px;
+    border-radius: 16px;
+    border: 1px solid #222;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-card:hover {
+    border-color: #333;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.search-label {
+    display: block;
+    font-size: 0.95rem;
+    color: #888;
+    margin-bottom: 15px;
+    font-weight: 400;
+}
+
+.search-input-wrapper {
+    position: relative;
+    display: flex;
+    gap: 12px;
+}
+
+.stock-input {
+    flex: 1;
+    padding: 16px 20px;
+    border: 1px solid #222;
+    border-radius: 12px;
+    background: #0a0a0a;
+    color: #fff;
+    font-size: 1rem;
+    font-family: "Poppins", sans-serif;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.stock-input::placeholder {
+    color: #444;
+}
+
+.stock-input:focus {
+    border-color: #444;
+    background: #0d0d0d;
+}
+
+.search-btn {
+    padding: 16px 28px;
+    background: #fff;
+    color: #000;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.search-btn:hover {
+    background: #e5e5e5;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1);
+}
+
+.search-btn:active {
+    transform: translateY(0);
+}
+
+.search-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Example tickers */
+.ticker-examples {
+    display: flex;
+    gap: 8px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.ticker-tag {
+    padding: 6px 12px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 6px;
+    color: #666;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.ticker-tag:hover {
+    background: #222;
+    color: #fff;
+    border-color: #444;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboard-container {
+        padding: 30px 20px;
+    }
+
+    .dashtitle {
+        font-size: 2rem;
+    }
+
+    .search-card {
+        padding: 25px 20px;
+    }
+
+    .search-input-wrapper {
+        flex-direction: column;
+    }
+
+    .stock-input {
+        padding: 14px 16px;
+        font-size: 16px;
+    }
+
+    .search-btn {
+        padding: 14px 20px;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboard-container {
+        padding: 20px 15px;
+    }
+
+    .dashtitle {
+        font-size: 1.6rem;
+    }
+
+    .search-card {
+        padding: 20px 15px;
+        border-radius: 12px;
+    }
+
+    .search-label {
+        font-size: 0.85rem;
+    }
+
+    .stock-input {
+        padding: 12px 14px;
+        border-radius: 10px;
+    }
+
+    .search-btn {
+        padding: 12px 16px;
+        border-radius: 10px;
+        font-size: 0.95rem;
+    }
+
+    .ticker-tag {
+        padding: 5px 10px;
+        font-size: 0.75rem;
+    }
 }

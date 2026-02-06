@@ -4,7 +4,8 @@ import '../styles/Dashboard.css';
 export default function Dashboard() {
   const [username, setUsername] = useState('');
   const [loading, setLoading] = useState(false);
-  const [userInput, setUserInput] = useState('');
+  const [userInput, setUserInput] = useState(''); 
+  const [brokerResponse, setBrokerResponse] = useState(''); 
 
   const exampleTickers = ['AAPL', 'GOOG', 'NFLX', 'TSLA', 'AMZN'];
 
@@ -26,9 +27,10 @@ export default function Dashboard() {
     setUserInput(ticker);
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();  
 
+    setLoading(true); 
     // start of with a base case here as such 
     if (userInput.trim() === ""){ 
       alert('Please Enter a Stock Ticker'); 
@@ -39,7 +41,34 @@ export default function Dashboard() {
     } 
 
     // begin the try and catch case to actually send it to the backend here as such 
-    
+    try {   
+      const sendToBackend = await fetch(`http://localhost:7898/api/v1/analysis?stockTicketer=${userInput}`, { 
+        method: 'GET', 
+        headers: { 
+          "Content-Type" : "application/json"
+        }, 
+      }); 
+
+      // add some checks here 
+      if (!sendToBackend){ 
+        console.log('Error sending to the backend'); 
+      }   
+
+      const stockData = await sendToBackend.json(); 
+      
+      if (!stockData){ 
+        console.log('No data retrieved from the backend'); 
+      } 
+
+      //set the data here  
+      setBrokerResponse(stockData.Broker); 
+      console.log('Data recieved:', stockData.Broker); 
+
+    } catch (error) { 
+      
+    } finally { 
+      setLoading(false); 
+    }
   }
 
   return(
